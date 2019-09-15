@@ -1,13 +1,11 @@
-package main;
-
 import java.util.List;
 
-public class TwitterNode {
+public class Vertex {
 	
 	private List<TwitterNode> connections;
 	private int profile;
 	
-	public TwitterNode(List<TwitterNode> c) {
+	public Vertex(List<TwitterNode> c) {
 		connections = c;
 	}
 	
