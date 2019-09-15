@@ -1,0 +1,1 @@
+/home/timur/data-sets/twitter-2010.txt

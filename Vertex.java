@@ -1,5 +1,3 @@
-package main;
-
 public class Vertex {
 	int label; 
 	Vertex(int i){
