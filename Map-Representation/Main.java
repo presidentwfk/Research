@@ -16,7 +16,7 @@ public class Main {
                 long linesParsed = 0;
 	      try {
 	         // open input stream test.txt for reading purpose.
-	         BufferedReader br = new BufferedReader(new FileReader("twitter-2010.txt"));
+	         BufferedReader br = new BufferedReader(new FileReader("../twitter-2010.txt"));
 	         while ((thisLine = br.readLine()) != null) {
 	        	if(Character.isDigit(thisLine.charAt(0))) {
 		         	String[] s = thisLine.split(" ");
