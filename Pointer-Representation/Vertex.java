@@ -1,23 +1,33 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class Vertex {
 	
-	private List<TwitterNode> connections;
-	private int profile;
+	private List<Vertex> connections;
+	private long profile;
 	
-	public Vertex(List<TwitterNode> c) {
-		connections = c;
+	public Vertex(long p) {
+		profile = p;
+                connections = new ArrayList<Vertex>();
 	}
 	
-	public void addConnection(TwitterNode n) {
+	public void addConnection(Vertex n) {
 		connections.add(n);
 	}
 	
-	public int getProfile() {
+	public long getProfile() {
 		return profile;
 	}
 	
-	public List<TwitterNode> getConnections(){
+	public List<Vertex> getConnections(){
 		return connections;
 	}
+        @Override
+        public boolean equals(Object o){
+          Vertex v = (Vertex)o;
+          if(v.getProfile() == profile){
+              return true;
+          }
+          return false;
+        }
 }

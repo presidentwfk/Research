@@ -7,32 +7,23 @@ import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
-		Graph twitterGraph = new Graph();
-		
-		String thisLine = null;
-	        System.out.println("Working");
-		
-		long startTime = System.currentTimeMillis();
-                long linesParsed = 0;
+	     Graph twitterGraph = new Graph();
+	     String thisLine = null;
+	     System.out.println("Working");
+	     long startTime = System.currentTimeMillis();
+             long linesParsed = 0;
 	      try {
 	         // open input stream test.txt for reading purpose.
 	         BufferedReader br = new BufferedReader(new FileReader("../twitter-2010.txt"));
 	         while ((thisLine = br.readLine()) != null) {
 	        	if(Character.isDigit(thisLine.charAt(0))) {
 		         	String[] s = thisLine.split(" ");
-		        	//System.out.println("Numbers: " + s.length);
-                                //if(s.length > 1) {
-			        int first = Integer.parseInt(s[0]);
-			        int second = Integer.parseInt(s[1]);
-			        //System.out.println(first + " " + second);
+		        	long first = Long.parseLong(s[0]);
+			        long second = Long.parseLong(s[1]);
 			        twitterGraph.addVertex(first);
-			        //System.out.println(twitterGraph.getAdjVertices(first));
-			        twitterGraph.addVertex(second);
-			        twitterGraph.addEdge(first, second);
-                                linesParsed++;
-		        	//}
-	        	}
-	         }   
+                                twitterGraph.addConnection(second);
+	        	} 
+              }   
 	         br.close();
 	      } catch(Exception e) {
 	         e.printStackTrace();
@@ -41,7 +32,6 @@ public class Main {
 	      long stopTime = System.currentTimeMillis();
               long elapsedTime = stopTime - startTime;
               System.out.println("Elapsed Time: " + elapsedTime + " milliseconds");
-              System.out.println("Lines parsed: " + linesParsed);
-
+              System.out.println("Graph Size: " + twitterGraph.getSize());
 	}        
 }
