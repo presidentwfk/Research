@@ -7,6 +7,8 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.util.List;
 import java.util.ArrayList;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class CreateSubset {
     
@@ -16,7 +18,7 @@ public class CreateSubset {
         try {
             BufferedReader br = new BufferedReader(new FileReader("twitter-2010.txt"));
             BufferedWriter bw = new BufferedWriter(new FileWriter("twitter-subset.txt", true));
-            int counter = 0;
+            long counter = 0;
             List<String> lines = new ArrayList<String>();
 
             while((thisLine = br.readLine()) != null && counter < 10000) {
@@ -29,11 +31,12 @@ public class CreateSubset {
             }
             System.out.println("Done");
             boolean sorted = false;
-            //while(!sorted){
-                //sorted = true;
-            for(int i = 0; i < lines.size() - 1; i++){
+
+            //for(long i = 0; i < lines.size() - 1; i++){
+            for(int i = 0; i < Files.lines(Paths.get("twitter-2010.txt")).count() - 1; i++){ 
                 int minInd = i;
-                for(int j = i+1; j < lines.size(); j++){
+                //for(long j = i+1; j < lines.size(); j++){
+                for(int j = i+1; j < Files.lines(Paths.get("twitter-2010.txt")).count(); j++){
                     String[] current = lines.get(j).split(" ");
                     long curr = Long.parseLong(current[0]);
                     String[] minimum = lines.get(minInd).split(" ");
@@ -43,9 +46,9 @@ public class CreateSubset {
                 String temp = lines.get(minInd);
                 lines.set(minInd, lines.get(i));
                 lines.set(i, temp);
-                if(i % 100 == 0) {System.out.println(i);}
+                if(i % 1 == 0) {System.out.println(i);}
             }
-            for(int i = lines.size() - 1; i >= 0; i--){
+            for(int i = 0; i < lines.size(); i++){
                 bw.append(lines.get(i));
                 bw.append("\n");
             }
