@@ -14,6 +14,7 @@ public class CreateSubset {
     
     public static void main(String[] args) throws Exception {
         String thisLine = null;
+        long startTime = System.currentTimeMillis();
 
         try {
             BufferedReader br = new BufferedReader(new FileReader("twitter-2010.txt"));
@@ -21,7 +22,7 @@ public class CreateSubset {
             long counter = 0;
             List<String> lines = new ArrayList<String>();
 
-            while((thisLine = br.readLine()) != null && counter < 10000/*Files.lines(Paths.get("twitter-2010.txt")).count()*/) {
+            while((thisLine = br.readLine()) != null && counter < 100000000/*Files.lines(Paths.get("twitter-2010.txt")).count()*/) {
                 //bw.append(br.readLine());
                 //bw.append("\n");
                 if(Character.isDigit(thisLine.charAt(0))){
@@ -57,6 +58,9 @@ public class CreateSubset {
             }
             System.out.println("Lines after: " + lines.size());
             //System.out.println(lines);
+            long stopTime = System.currentTimeMillis();
+            long elapsed =  stopTime - startTime;
+            System.out.println("Elapsed time: " + elapsed);
             bw.close();
         }
         catch(Exception e){
