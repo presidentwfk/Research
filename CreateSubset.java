@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import static spark.Spark.*;
 
 public class CreateSubset {
     
