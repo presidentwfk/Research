@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import static spark.Spark.*;
 
 public class CreateSubset {
     
@@ -22,7 +23,7 @@ public class CreateSubset {
             long counter = 0;
             List<String> lines = new ArrayList<String>();
 
-            while((thisLine = br.readLine()) != null && counter < 100000000/*Files.lines(Paths.get("twitter-2010.txt")).count()*/) {
+            while((thisLine = br.readLine()) != null && counter < 10000/*Files.lines(Paths.get("twitter-2010.txt")).count()*/) {
                 //bw.append(br.readLine());
                 //bw.append("\n");
                 if(Character.isDigit(thisLine.charAt(0))){
